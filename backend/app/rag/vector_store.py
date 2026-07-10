@@ -39,9 +39,7 @@ class QdrantVectorStore:
         if self._collection not in existing:
             self._client.create_collection(
                 collection_name=self._collection,
-                vectors_config=qmodels.VectorParams(
-                    size=dim, distance=qmodels.Distance.COSINE
-                ),
+                vectors_config=qmodels.VectorParams(size=dim, distance=qmodels.Distance.COSINE),
             )
 
     def upsert(self, ids, vectors, payloads) -> None:
@@ -56,8 +54,7 @@ class QdrantVectorStore:
             collection_name=self._collection, query_vector=vector, limit=top_k
         )
         return [
-            SearchHit(vector_id=str(r.id), score=r.score, payload=r.payload or {})
-            for r in results
+            SearchHit(vector_id=str(r.id), score=r.score, payload=r.payload or {}) for r in results
         ]
 
 

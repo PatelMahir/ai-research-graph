@@ -64,9 +64,7 @@ async def ingest_document(session: AsyncSession, document: Document, text: str) 
                 "excerpt": content[:400],
             }
         )
-        session.add(
-            Chunk(document_id=document.id, ordinal=ordinal, content=content, vector_id=vid)
-        )
+        session.add(Chunk(document_id=document.id, ordinal=ordinal, content=content, vector_id=vid))
 
     store.upsert(ids=ids, vectors=vectors, payloads=payloads)
 

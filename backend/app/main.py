@@ -7,8 +7,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.routes import documents, graph, health, query
 from app.core.logging import configure_logging, get_logger
-from app.db.session import engine
 from app.db.base import Base
+from app.db.session import engine
 
 logger = get_logger(__name__)
 

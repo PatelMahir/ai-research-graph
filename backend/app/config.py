@@ -14,9 +14,7 @@ class Settings(BaseSettings):
     api_port: int = 8000
 
     # PostgreSQL
-    database_url: str = (
-        "postgresql+asyncpg://argraph:change-me@localhost:5432/ai_research_graph"
-    )
+    database_url: str = "postgresql+asyncpg://argraph:change-me@localhost:5432/ai_research_graph"
 
     # Redis
     redis_url: str = "redis://localhost:6379/0"

@@ -96,9 +96,7 @@ class GraphEdge(Base):
 
     source: Mapped[GraphNode] = relationship(back_populates="out_edges", foreign_keys=[source_id])
 
-    __table_args__ = (
-        Index("ix_edge_unique", "source_id", "target_id", "relation", unique=True),
-    )
+    __table_args__ = (Index("ix_edge_unique", "source_id", "target_id", "relation", unique=True),)
 
 
 class Chunk(Base):

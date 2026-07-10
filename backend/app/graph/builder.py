@@ -15,9 +15,7 @@ from app.db.models import GraphEdge, GraphNode, NodeType
 async def upsert_node(
     session: AsyncSession, node_type: NodeType, name: str, properties: dict | None = None
 ) -> GraphNode:
-    stmt = select(GraphNode).where(
-        GraphNode.node_type == node_type, GraphNode.name == name
-    )
+    stmt = select(GraphNode).where(GraphNode.node_type == node_type, GraphNode.name == name)
     node = (await session.execute(stmt)).scalar_one_or_none()
     if node is None:
         node = GraphNode(node_type=node_type, name=name, properties=properties or {})
